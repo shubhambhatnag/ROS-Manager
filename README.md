@@ -8,12 +8,9 @@ ROS Visualizer integrates NiceGUI, MinIO, and Webviz using Docker and NGINX. The
 
 - [Prerequisites](#prerequisites)
 - [Setup](#setup)
-- [Configuration](#configuration)
 - [Deployment](#deployment)
 - [Usage](#usage)
 - [Troubleshooting](#troubleshooting)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Prerequisites
 
@@ -75,9 +72,4 @@ Before you begin, ensure you have the following installed:
 
 
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
 
