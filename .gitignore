@@ -1,3 +1,6 @@
 .venv
 __pycache__
+create_bucket.py
+import_old_data.py
+test.py
 ros-files

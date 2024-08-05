@@ -1,0 +1,53 @@
+version: '3.9'
+services:
+  minio:
+    image: minio/minio
+    container_name: minio
+    networks:
+      - mynetwork
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio_data:/data
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+      MINIO_BROWSER_REDIRECT_URL: http://localhost/minio-console/
+    command: server /data --console-address ":9001"
+  webviz:
+    image: cruise/webviz
+    container_name: webviz
+    networks:
+      - mynetwork
+    expose:
+      - "8080"
+    environment:
+      - CORS_ORIGIN=http://localhost
+  nicegui:
+    build: ./nicegui
+    container_name: nicegui
+    networks:
+      - mynetwork
+    ports:
+      - "8080:8080"
+    depends_on:
+      - minio
+      - webviz
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    networks:
+      - mynetwork
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - nicegui
+      - webviz
+      - minio
+volumes:
+  minio_data:
+networks:
+  mynetwork:
