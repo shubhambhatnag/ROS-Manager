@@ -62,6 +62,7 @@ Before you begin, ensure you have the following installed:
 1. **Uploading ROS Bag Files to MinIO**
 
    - Access the MinIO console at ```http://localhost/minio-console```
+   - Login with username and password (both are "minioadmin")
    - Use the MinIO console to upload ROS bag files to the ros-data bucket (Bucket should already be created for you, but in the event that it does not exist please create a new bucket titled 'ros-data').
 
 2. **Visualizing ROS Bag Files**
