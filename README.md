@@ -18,6 +18,7 @@ Before you begin, ensure you have the following installed:
 - [Docker](https://www.docker.com/)
 - [Docker Compose](https://docs.docker.com/compose/)
 - [Git](https://git-scm.com/)
+- [Python (Newest stable 3.X reccomended) ](https://www.python.org/downloads/)
 
 ## Setup
 
@@ -25,8 +26,7 @@ Before you begin, ensure you have the following installed:
 
   
    git clone https://github.com/shubhambhatnag/ROS-Manager.git \
-   cd nicegui-minio-webviz
-
+   cd ROS-Manager
 
 ## Deployment
 
@@ -49,7 +49,7 @@ Before you begin, ensure you have the following installed:
 
    
 
-    http://localhost
+    http://localhost (Google Chrome strongly recommended)
 
 
 
@@ -68,11 +68,12 @@ Before you begin, ensure you have the following installed:
 
    - Access the NiceGUI interface at http://localhost
    - Select a ROS bag file from the dropdown menu to visualize it using Webviz.
+   - For more information about manipulating Webviz view this
 
-2. **Editing Layout**
+3. **Editing Layout**
 
    - Use the toggle to select which pre-determined layout to use
-   - The webviz app also allows you to set your own layout, and import JSON layouts (top right)
+   - The Webviz app also allows you to set your own layout, and import/export your own JSON layouts (top right)
 
 
 
