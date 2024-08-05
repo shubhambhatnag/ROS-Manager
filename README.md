@@ -25,8 +25,8 @@ Before you begin, ensure you have the following installed:
 1. **Clone the Repository**
 
   
-   git clone https://github.com/shubhambhatnag/ROS-Manager.git \
-   cd ROS-Manager
+   ```git clone https://github.com/shubhambhatnag/ROS-Manager.git``` \
+   ```cd ROS-Manager```
 
 ## Deployment
 
@@ -37,7 +37,7 @@ Before you begin, ensure you have the following installed:
    
 
 
-   docker-compose up --build -d
+   ```docker-compose up --build -d```
 
 
 
@@ -49,24 +49,24 @@ Before you begin, ensure you have the following installed:
 
    
 
-    http://localhost (Google Chrome strongly recommended)
+    ```http://localhost``` (Google Chrome strongly recommended)
 
 
 
-   - MinIO Console: http://localhost/minio-console
-   - Webviz: http://localhost/webviz
-   - NiceGUI Interface: http://localhost
+   - MinIO Console: ```http://localhost/minio-console```
+   - Webviz: ```http://localhost/webviz```
+   - NiceGUI Interface: ```http://localhost```
 
 ## Usage
 
 1. **Uploading ROS Bag Files to MinIO**
 
-   - Access the MinIO console at http://localhost/minio-console
+   - Access the MinIO console at ```http://localhost/minio-console```
    - Use the MinIO console to upload ROS bag files to the ros-data bucket (Bucket should already be created for you, but in the event that it does not exist please create a new bucket titled 'ros-data').
 
 2. **Visualizing ROS Bag Files**
 
-   - Access the NiceGUI interface at http://localhost
+   - Access the NiceGUI interface at ```http://localhost```
    - Select a ROS bag file from the dropdown menu to visualize it using Webviz.
    - If new bags are added to bucket, please reload the page.
 
@@ -77,7 +77,7 @@ Before you begin, ensure you have the following installed:
 
 4. **Closing Application**
 
-   - To close the application and spin down all services , run ``` docker compose down```
+   - To close the application and spin down all services , run ```docker compose down```
 
 
 
