@@ -19,6 +19,8 @@ if not minio_client.bucket_exists(bucket_name):
 else:
     print(f"Bucket '{bucket_name}' already exists.")
 
+
+# URL of the Webviz instance
 WEBVIZ_URL = os.getenv('WEBVIZ_URL', 'http://localhost/webviz')
 
 # Function to modify the presigned URL
@@ -42,17 +44,16 @@ def list_bag_files(bucket_name):
 
 @ui.page("/")
 def page():
-    test_url = "http://localhost/webviz/?remote-bag-url=http%3A%2F%2Flocalhost%2Fminio%2Fros-data%2Frecorded_data_11_01_56.bag%3FX-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3Dminioadmin%252F20240804%252Fus-east-1%252Fs3%252Faws4_request%26X-Amz-Date%3D20240804T193815Z%26X-Amz-Expires%3D604800%26X-Amz-SignedHeaders%3Dhost%26X-Amz-Signature%3D3c4bb5ea0da319edd2e0f67828a039a0293fe75748b41f71c012fb837e1d22e7&seek-to=1694185322.908547472&layout_url=https%3A%2F%2Fapi.npoint.io%2Fd8cdfcecc99b68123ac7"
-    # test = ui.html(f"""
-    # <iframe src="{test_url}" style="width: 150vh; height: 80vh; border: none;">
-    #     <base href="http://localhost/webviz/">
-    # </iframe>
-    # """)
 
+
+    # Function to apply the selected layout to the Webviz instance
     def apply_layout(index):
         nonlocal webviz_iframe
         nonlocal current_url
 
+
+
+        #URLs (Pre-parsed) for the different layouts hosted on npoint.io
         layouts = [
             "https%3A%2F%2Fapi.npoint.io%2F6b92217796bcefd2ac95",
             "https%3A%2F%2Fapi.npoint.io%2Fd8cdfcecc99b68123ac7",
@@ -66,19 +67,29 @@ def page():
         </iframe>
         """
 
+    #Keeps track of the current URL (so it can be modified later to change the layout)
     current_url = None
 
+
+    #Function to display the selected bag file in the Webviz instance
     def display_bag(bag_file):
         nonlocal layouts
         nonlocal webviz_iframe
         nonlocal current_url
         nonlocal selected
         nonlocal layout_toggle
-        print("Attempting to display bag: ", bag_file, flush=True)
+
+        #Generates a presigned URL for the selected bag file
         url = generate_presigned_url('ros-data', bag_file)
+
+        #URL for the Webviz instance with the selected bag file
         full_url = f"{WEBVIZ_URL}/?remote-bag-url={urllib.parse.quote(url, safe='')}"
+
+        #Applies 1st layout by default
         full_url_with_layout = full_url + "&layout-url=https%3A%2F%2Fapi.npoint.io%2F6b92217796bcefd2ac95"
 
+
+        #Updates the Webviz iframe with the new URL
         webviz_iframe.content = f"""
         <iframe src="{full_url_with_layout}" style="width: 150vh; height: 80vh; border: none; overflow: hidden;">
             <base href="http://localhost/webviz/">
@@ -86,6 +97,8 @@ def page():
         """
         current_url = full_url
 
+
+        #Updates the UI elements
         layouts.visible = True
         layout_toggle.value = 1
         webviz_iframe.visible = True
@@ -95,10 +108,14 @@ def page():
     ui.label("ROS Bag Visualizer").style("font-size: 48px; font-weight: bold;").classes("self-center")
     selected = ui.label("Selected ROS Bag: None").style("font-size: 24px;").classes("self-center")
 
+
+    #Query the Minio server for the list of bag files and display them in a dropdown
     with ui.dropdown_button('Select ROS Bag', auto_close=True).classes("self-center"):
         for bag in list_bag_files('ros-data'):
             ui.item(bag[:-4], on_click=lambda bag=bag: display_bag(bag))
 
+
+    #Layout selection toggle (hidden by default)
     layouts = ui.row().classes("self-center")
     with layouts:
         ui.label("Select Layout: ").style("font-size: 24px;")
@@ -106,10 +123,14 @@ def page():
 
     layouts.visible = False
 
+
+    #Webviz iframe (hidden by default)
     with ui.row().classes("self-center"):
         webviz_iframe = ui.html('')
         webviz_iframe.visible = False
     
+
+    #Footer with injection of custom HTML/CSS
     footer = ui.footer(fixed=False).style('').classes("self-center")
 
     with footer:
