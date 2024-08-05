@@ -1,8 +1,8 @@
 
 
-# ROS Visualizer
+# ROS Manager
 
-ROS Visualizer integrates NiceGUI, MinIO, and Webviz using Docker and NGINX. The goal is to provide a seamless interface for visualizing ROS bag files stored in MinIO and viewed through Webviz.
+ROS Manager integrates NiceGUI, MinIO, and Webviz using Docker and NGINX. The goal is to provide a seamless interface for visualizing ROS bag files stored in MinIO and viewed through Webviz.
 
 ## Table of Contents
 
