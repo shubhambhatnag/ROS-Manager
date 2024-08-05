@@ -77,7 +77,7 @@ Before you begin, ensure you have the following installed:
 
 4. **Closing Application**
 
-   - To close the application and spin down all services , run \ docker compose down
+   - To close the application and spin down all services , run ``` docker compose down```
 
 
 
