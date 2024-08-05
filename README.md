@@ -32,7 +32,7 @@ Before you begin, ensure you have the following installed:
 
 1. **Build and Start the Docker Containers**
 
-   Navigate to the root directory of the project and run:
+   Navigate to the root directory of the project and run (Make sure docker is running):
 
    
 
