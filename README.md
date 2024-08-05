@@ -62,18 +62,24 @@ Before you begin, ensure you have the following installed:
 1. **Uploading ROS Bag Files to MinIO**
 
    - Access the MinIO console at http://localhost/minio-console
-   - Use the MinIO console to upload ROS bag files to the ros-data bucket.
+   - Use the MinIO console to upload ROS bag files to the ros-data bucket (Bucket should already be created for you, but in the event that it does not exist please create a new bucket titled 'ros-data').
 
 2. **Visualizing ROS Bag Files**
 
    - Access the NiceGUI interface at http://localhost
    - Select a ROS bag file from the dropdown menu to visualize it using Webviz.
-   - For more information about manipulating Webviz view this
+   - If new bags are added to bucket, please reload the page.
 
 3. **Editing Layout**
 
    - Use the toggle to select which pre-determined layout to use
    - The Webviz app also allows you to set your own layout, and import/export your own JSON layouts (top right)
+
+4. **Closing Application**
+
+   - To close the application and spin down all services , run \ docker compose down
+
+
 
 
 

@@ -10,6 +10,15 @@ minio_client = Minio(
     secret_key='minioadmin',
     secure=False
 )
+
+# Check if the bucket 'ros-data' exists, and create it if it doesn't
+bucket_name = 'ros-data'
+if not minio_client.bucket_exists(bucket_name):
+    minio_client.make_bucket(bucket_name)
+    print(f"Bucket '{bucket_name}' created.")
+else:
+    print(f"Bucket '{bucket_name}' already exists.")
+
 WEBVIZ_URL = os.getenv('WEBVIZ_URL', 'http://localhost/webviz')
 
 # Function to modify the presigned URL
