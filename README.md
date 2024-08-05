@@ -69,6 +69,11 @@ Before you begin, ensure you have the following installed:
    - Access the NiceGUI interface at http://localhost
    - Select a ROS bag file from the dropdown menu to visualize it using Webviz.
 
+2. **Editing Layout**
+
+   - Use the toggle to select which pre-determined layout to use
+   - The webviz app also allows you to set your own layout, and import JSON layouts (top right)
+
 
 
 
