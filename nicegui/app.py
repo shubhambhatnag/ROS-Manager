@@ -106,9 +106,15 @@ def page():
 
     ui.space()
     ui.label("ROS Bag Visualizer").style("font-size: 48px; font-weight: bold;").classes("self-center")
+    
+    #Button to access the MinIO storage
+    minio_button = ui.button("Access MinIO Storage", on_click=lambda: ui.navigate.to("http://localhost/minio-console/browser/ros-data", new_tab = True)).classes("self-center")
+
+    with minio_button:
+        ui.tooltip("If prompted, username and password are both 'minioadmin'")
     selected = ui.label("Selected ROS Bag: None").style("font-size: 24px;").classes("self-center")
 
-
+    
     #Query the Minio server for the list of bag files and display them in a dropdown
     with ui.dropdown_button('Select ROS Bag', auto_close=True).classes("self-center"):
         for bag in list_bag_files('ros-data'):
